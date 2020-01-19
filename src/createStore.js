@@ -9,7 +9,7 @@
  */ 
 const createStore = (reducers, initialValue = {}) => {
   // valid类型判断
-  if (!reducers || typeof reducers !== 'function' || typeof reducers !== 'object') {
+  if (!reducers || (typeof reducers !== 'function' && typeof reducers !== 'object')) {
     throw new TypeError('reducers was supposed 2 be a object or a function')
   }
 
@@ -39,16 +39,16 @@ const createStore = (reducers, initialValue = {}) => {
     })
   }
   /* ================== dispatch ==================== */
-  const dispatch = async action => {
+  const dispatch = action => {
     try {
-      _currentState = await reducers(_currentState)(action)
+      _currentState = reducers(_currentState)(action)
       // 通知所有订阅者state更新了
       notify()
     } catch(e) {
       throw new Error(e)
     }
   }
-  // 初始化
+  // 初始化定义了reducer的属性
   dispatch({
     type: '@@redux_init'
   })
@@ -63,3 +63,5 @@ const createStore = (reducers, initialValue = {}) => {
     subscribe
   }
 }
+
+module.exports = createStore
