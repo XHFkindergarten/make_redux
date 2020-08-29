@@ -1,5 +1,5 @@
-const combineReducers = require('./combineReducers')
-const createStore = require('./createStore')
+const combineReducers = require('./rebux/combineReducers')
+const createStore = require('./rebux/createStore')
 
 const initialState = {
   name: 'XHFk1nd3rgarten',
