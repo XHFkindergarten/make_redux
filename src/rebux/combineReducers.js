@@ -9,7 +9,7 @@
  */
 const combineReducers = map => {
   const reducerContainer = (states, action) => {
-    // 生成一个栈地址发生了改变的新state(没有理由,因为没想好为什么要返回新的state对象而不是改变原有的state对象)
+    // 生成一个栈地址发生了改变的新state
     let _newState = {}
     try {
       // 收集发生了改变的reducer name
